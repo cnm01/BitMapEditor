@@ -3,6 +3,10 @@
 A Ruby 2.3 program that simulates a basic interactive bitmap editor. Bitmaps
 are represented as an M x N matrix of pixels with each element representing a colour.    
 
+### Running  
+
+`>bin/bitmap_editor examples/show.txt`
+
 ### Program input  
 The input consists of a file containing a sequence of commands, where a command is
 represented by a single capital letter at the beginning of the line. Parameters of the
@@ -32,7 +36,7 @@ L 1 3 A
 V 2 3 6 W  
 H 3 5 2 Z  
 S
-  
+
 ###### Expected Output:  
 OOOOO  
 OOZZZ  
