@@ -56,7 +56,7 @@ class BitMap
     end
   end
 
-  #draws a vertical segment of char between y1 and y2 inclusive
+  #draws a horizontal segment of char between x1 and x2 inclusive
   def horizontal(y, x1, x2, char)
     @array[y-1].each_with_index do |element, index|
       if(x1 == x2 && index == x1-1)
@@ -69,6 +69,25 @@ class BitMap
       else
         if(index <= x2-1 && index >= x1-1)
           @array[y-1][index] = char
+        end
+      end
+    end
+  end
+
+  #draws a vertical segment of char between y1 and y2 inclusive
+  def vertical(x, y1, y2, char)
+    @array.each_with_index do |element, index|
+      if(y1 == y2 && index == y1-1)
+        @array[y1-1][x-1] = char
+      end
+      if(y1 > y2)
+        if(index <= y1-1 && index >= y2-1)
+          @array[index][x-1] = char
+        end
+      end
+      if(y1 < y2)
+        if(index <= y2-1 && index >= y1-1)
+          @array[index][x-1] = char
         end
       end
     end
@@ -87,3 +106,14 @@ end
 # puts "---"
 # map.horizontal(1,1,10, "X")
 # map.printToTerminal
+
+# map = BitMap.new(10,10)
+# map.printToTerminal
+# puts "---"
+# map.vertical(10,1,10, "X")
+# map.vertical(1,10,1, "X")
+# map.horizontal(1,10,1, "X")
+# map.horizontal(10,1,10, "X")
+# map.printToTerminal
+# puts "---"
+# map
