@@ -365,6 +365,9 @@ describe BitMap do
     expect(bitmap.array).to eq(temp)
   end
 
-  
+  it "raises Index out of bound error" do
+    bitmap = BitMap.new(3,3)
+    expect(bitmap.set(0,1, "X")).to raise_exception
+  end
 
 end
