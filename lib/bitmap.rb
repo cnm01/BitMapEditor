@@ -18,7 +18,7 @@ class BitMap
 
   #sets bit (x,y) to supplied char
   def set(x, y, char)
-    array[y-1][x-1] = char
+    @array[y-1][x-1] = char
   end
 
   #sets entire grid to char
@@ -56,6 +56,25 @@ class BitMap
     end
   end
 
+  #draws a vertical segment of char between y1 and y2 inclusive
+  def horizontal(y, x1, x2, char)
+    @array[y-1].each_with_index do |element, index|
+      if(x1 == x2 && index == x1-1)
+        @array[y-1][index] = char
+      end
+      if(x1 > x2)
+        if(index <= x1-1 && index >= x2-1)
+          @array[y-1][index] = char
+        end
+      else
+        if(index <= x2-1 && index >= x1-1)
+          @array[y-1][index] = char
+        end
+      end
+    end
+  end
+
+
 
 
 
@@ -63,5 +82,8 @@ end
 
 
 
-map = BitMap.new(30,30)
-map.printToTerminal
+# map = BitMap.new(10,10)
+# map.printToTerminal
+# puts "---"
+# map.horizontal(1,1,10, "X")
+# map.printToTerminal

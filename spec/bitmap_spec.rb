@@ -96,4 +96,150 @@ describe BitMap do
     expect(bitmap.array).to eq(temp)
   end
 
+  it "sets top row to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(1,1,10,"X")
+    temp = [["X","X","X","X","X","X","X","X","X","X",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets top row (3 to 9) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(1,3,9,"X")
+    temp = [["O","O","X","X","X","X","X","X","X","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets top row (9 to 3) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(1,9,3,"X")
+    temp = [["O","O","X","X","X","X","X","X","X","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets top row (1) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(1,1,1,"X")
+    temp = [["X","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets bottom row to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(10,1,10,"X")
+    temp = [["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["X","X","X","X","X","X","X","X","X","X",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets bottom row (5 to 10) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(10,5,10,"X")
+    temp = [["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","X","X","X","X","X","X",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets bottom row (10 to 5) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(10,5,10,"X")
+    temp = [["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","X","X","X","X","X","X",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+  it "sets bottom row (9) to x" do
+    bitmap = BitMap.new(10,10)
+    bitmap.horizontal(10,9,9,"X")
+    temp = [["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","O","O",],
+            ["O","O","O","O","O","O","O","O","X","O",],]
+    #x and y reversed
+    #subtract 1 from x and y when writing here
+    expect(bitmap.array).to eq(temp)
+  end
+
+
+
 end
