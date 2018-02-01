@@ -13,25 +13,30 @@ class BitMap
   def initialize(width, height)
     @width = width
     @height = height
+    #if rectangle, swap height and width to allow input in form (x,y)
     if(@width!=@height)
       temp = @height
       @height = @width
       @width = temp
     end
+    #create '2d' array with all bits set to O
     @array = Array.new(@width){Array.new(@height, "O")}
   end
 
+  #sets the supplied bit (x,y) to the supplied char
   def set(x, y, char)
+    #if supplied x,y out of bounds, raise exception
     if(x == 0 || y == 0 || x > @height || y > @width)
       raise Exception.new("Index out of bounds")
     end
       @array[y-1][x-1] = char
   end
 
-  #sets entire grid to char
+  #sets entire grid to supplied char
   def setAll(char)
+    #for each array element in outer @array
     @array.each do |element|
-      #for each element in inner array
+      #for each bit element in inner array
       element.each_with_index do |innerElement, index|
         element[index] = char
       end
@@ -40,9 +45,9 @@ class BitMap
 
   #sets every bit to "O"
   def clear()
-    #for each array in outer array
+    #for each array element in outer @array
     @array.each do |element|
-      #for each element in inner array
+      #for each bit element in inner array
       element.each_with_index do |innerElement, index|
         element[index] = "O"
       end
@@ -51,11 +56,13 @@ class BitMap
 
   #prints bitmap to terminal
   def printToTerminal
+    #for each array element in outer @array
     @array.each_with_index do |element,index|
+      #for each bit element in inner array
       element.each_with_index do |innerElement, innerIndex|
+        #if end of row, print new line to visually represent grid
         if( innerIndex == element.size - 1)
-          print innerElement
-          print "\n"
+          print innerElement + "\n"
         else
           print innerElement + " "
         end
@@ -65,17 +72,22 @@ class BitMap
 
   #draws a horizontal segment of char between x1 and x2 inclusive
   def horizontal(y, x1, x2, char)
+    #if supplied vars are out of bounds, raise exception
     if(y == 0 || x1 == 0 || x2 == 0 || y > @width || x1 > @height || x2 > @height)
       raise Exception.new("Index out of bounds")
     end
     @array[y-1].each_with_index do |element, index|
+      #if only one bit selected
       if(x1 == x2 && index == x1-1)
         @array[y-1][index] = char
       end
+      #if line selected
+      #case: first supplied x is greater than second
       if(x1 > x2)
         if(index <= x1-1 && index >= x2-1)
           @array[y-1][index] = char
         end
+      #case: second supplied x is greater than first
       else
         if(index <= x2-1 && index >= x1-1)
           @array[y-1][index] = char
@@ -86,18 +98,23 @@ class BitMap
 
   #draws a vertical segment of char between y1 and y2 inclusive
   def vertical(x, y1, y2, char)
+    #if supplied vars are out of bounds, raise exception
     if(x == 0 || y1 == 0 || y2 == 0 || x > @height || y1 > @width || y2 > @width)
       raise Exception.new("Index out of bounds")
     end
     @array.each_with_index do |element, index|
+      #if only one bit selected
       if(y1 == y2 && index == y1-1)
         @array[y1-1][x-1] = char
       end
+      #if line selected
+      #case: first supplied y is greater than second
       if(y1 > y2)
         if(index <= y1-1 && index >= y2-1)
           @array[index][x-1] = char
         end
       end
+      #case: second supplied y is greater than first
       if(y1 < y2)
         if(index <= y2-1 && index >= y1-1)
           @array[index][x-1] = char
@@ -105,8 +122,6 @@ class BitMap
       end
     end
   end
-
-
 
 
 
@@ -120,12 +135,12 @@ end
 # map.horizontal(1,1,10, "X")
 # map.printToTerminal
 
-bitmap = BitMap.new(5,3)
-# bitmap.set(1,1,"X")
-bitmap.horizontal(1,1,5,"X")
-bitmap.vertical(1,1,3,"X")
-bitmap.set(5,3,"X")
-bitmap.printToTerminal
+# bitmap = BitMap.new(3,5)
+# # bitmap.set(1,1,"X")
+# bitmap.horizontal(1,1,3,"X")
+# bitmap.vertical(1,1,5,"X")
+# bitmap.set(3,5,"X")
+# bitmap.printToTerminal
 
 # map = BitMap.new(10,10)
 # map.printToTerminal
@@ -137,3 +152,15 @@ bitmap.printToTerminal
 # map.printToTerminal
 # puts "---"
 # map
+#
+# text = "I 3 4"
+# puts text
+# # text = "3"
+# case text
+# when /I\s+\d+\s+\d+/
+#   puts "Yes"
+#   array = text.split
+#   puts array[0]
+#   puts array[1]
+#   puts array[2]
+# end

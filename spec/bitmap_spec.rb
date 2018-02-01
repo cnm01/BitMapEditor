@@ -388,4 +388,15 @@ describe BitMap do
     expect(bitmap.array).to eq(temp)
   end
 
+  it "handles rectangular bitmap" do
+    bitmap = BitMap.new(5,3)
+    bitmap.set(1,1,"X")
+    bitmap.horizontal(3,1,5,"X")
+    bitmap.vertical(2,1,3,"X")
+    temp = [["X","X","O","O","O",],
+            ["O","X","O","O","O",],
+            ["X","X","X","X","X",]]
+    expect(bitmap.array).to eq(temp)
+  end
+
 end
