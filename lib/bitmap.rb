@@ -13,15 +13,19 @@ class BitMap
   def initialize(width, height)
     @width = width
     @height = height
+    if(@width!=@height)
+      temp = @height
+      @height = @width
+      @width = temp
+    end
     @array = Array.new(@width){Array.new(@height, "O")}
   end
 
-  #sets bit (x,y) to supplied char
   def set(x, y, char)
-    if(x == 0 || y == 0 || x > @width || y > @height)
-      raise Exception.new("Index out of Bounds")
+    if(x == 0 || y == 0 || x > @height || y > @width)
+      raise Exception.new("Index out of bounds")
     end
-    @array[y-1][x-1] = char
+      @array[y-1][x-1] = char
   end
 
   #sets entire grid to char
@@ -61,8 +65,8 @@ class BitMap
 
   #draws a horizontal segment of char between x1 and x2 inclusive
   def horizontal(y, x1, x2, char)
-    if(y == 0 || x1 == 0 || x2 == 0 || y > @height || x1 > @width || x2 > @width)
-      raise Exception.new("Index out of Bounds")
+    if(y == 0 || x1 == 0 || x2 == 0 || y > @width || x1 > @height || x2 > @height)
+      raise Exception.new("Index out of bounds")
     end
     @array[y-1].each_with_index do |element, index|
       if(x1 == x2 && index == x1-1)
@@ -83,7 +87,7 @@ class BitMap
   #draws a vertical segment of char between y1 and y2 inclusive
   def vertical(x, y1, y2, char)
     if(x == 0 || y1 == 0 || y2 == 0 || x > @height || y1 > @width || y2 > @width)
-      raise Exception.new("Index out of Bounds")
+      raise Exception.new("Index out of bounds")
     end
     @array.each_with_index do |element, index|
       if(y1 == y2 && index == y1-1)
@@ -110,11 +114,18 @@ end
 
 
 
-map = BitMap.new(10,10)
-map.printToTerminal
-puts "---"
-map.horizontal(1,1,10, "X")
-map.printToTerminal
+# map = BitMap.new(10,10)
+# map.printToTerminal
+# puts "---"
+# map.horizontal(1,1,10, "X")
+# map.printToTerminal
+
+bitmap = BitMap.new(5,3)
+# bitmap.set(1,1,"X")
+bitmap.horizontal(1,1,5,"X")
+bitmap.vertical(1,1,3,"X")
+bitmap.set(5,3,"X")
+bitmap.printToTerminal
 
 # map = BitMap.new(10,10)
 # map.printToTerminal

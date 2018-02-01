@@ -365,9 +365,27 @@ describe BitMap do
     expect(bitmap.array).to eq(temp)
   end
 
-  it "raises Index out of bound error" do
+  it "raises 'Index out of bound error' on (0,0)" do
     bitmap = BitMap.new(3,3)
-    expect(bitmap.set(0,1, "X")).to raise_exception
+    expect{bitmap.set(0,0, "X")}.to raise_error("Index out of bounds")
+  end
+
+  it "raises 'Index out of bound error' on (4,4)" do
+    bitmap = BitMap.new(3,3)
+    expect{bitmap.set(4,4, "X")}.to raise_error("Index out of bounds")
+  end
+
+  it "handles rectangular bitmap" do
+    bitmap = BitMap.new(3,5)
+    bitmap.set(1,1,"X")
+    bitmap.horizontal(3,1,3,"X")
+    bitmap.vertical(2,1,5,"X")
+    temp = [["X","X","O",],
+            ["O","X","O",],
+            ["X","X","X",],
+            ["O","X","O",],
+            ["O","X","O",]]
+    expect(bitmap.array).to eq(temp)
   end
 
 end
