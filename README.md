@@ -38,9 +38,9 @@ H 3 5 2 Z
 S
 
 ###### Expected Output:  
-O O O O O  
-O O O O O  
-A Z Z Z Z  
-O W O O O  
-O W O O O  
-O W O O O
+OOOOO  
+OOOOO  
+AZZZZ  
+OWOOO  
+OWOOO  
+OWOOO
