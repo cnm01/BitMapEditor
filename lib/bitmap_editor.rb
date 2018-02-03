@@ -22,7 +22,7 @@ class BitmapEditor
             @bitmap.clear
           end
 
-      #L X Y C :cColours the pixel (X,Y) with colour C
+      #L X Y C :colours the pixel (X,Y) with colour C
       when /L\s+\d+\s+\d+\s+[a-zA-Z]/
           if @bitmap.nil?
             puts "No bitmap to set"

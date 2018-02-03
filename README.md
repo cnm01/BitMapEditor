@@ -1,11 +1,17 @@
 # BitMapEditor    
 
 A Ruby 2.3 program that simulates a basic interactive bitmap editor. Bitmaps
-are represented as an M x N matrix of pixels with each element representing a colour.    
+are represented as an M x N matrix of pixels with each element representing a colour. The matrix is oriented as follows.
+
+<br/>
+<p align="center">
+  <img src="res/matrix.jpg" width="600"/>
+</p>  
+<br/>
 
 ### Running  
 
-`>bin/bitmap_editor examples/show.txt`
+`>ruby bin/bitmap_editor examples/show.txt`
 
 ### Program input  
 The input consists of a file containing a sequence of commands, where a command is
@@ -13,7 +19,7 @@ represented by a single capital letter at the beginning of the line. Parameters 
 command are separated by white spaces and they follow the command character.
 Pixel coordinates are a pair of integers: a column number between 1 and 250, and a
 row number between 1 and 250. Bitmaps starts at coordinates 1,1. Colours are
-specified by capital letters.  
+specified by capital letters.
 
 ### Commands  
 There are 6 supported commands:
@@ -31,16 +37,28 @@ To run the application you must supply a command file like so bin/bitmap_editor
 examples/show.txt  
 
 ###### Input File:  
-I 5 6  
-L 1 3 A  
-V 2 3 6 W  
-H 3 5 2 Z  
-S
+<br>
+<img src="res/input.png" width="150"/>
+
 
 ###### Expected Output:  
-OOOOO  
-OOOOO  
-AZZZZ  
-OWOOO  
-OWOOO  
-OWOOO
+<br>
+<img src="res/output.png" width="130"/>
+
+
+### Error Handling
+
+If the command file contains an L X Y C, V X Y1 Y2, or a H X1 X2 Y C command, where X or Y are not within the BitMap, an Index out of bounds exception is raised. In this case the input file will need to be amended accordingly. The input file should not contain any blank lines between commands. Blank lines will result in "unrecognised command ''" error messages. There must be at least one whitespace character separating each parameter of a command eg. 'L    4  3   D' will be accepted, but 'L43D' will not. An input file must consist of a 'I N M' command which creates a BitMap, before any modifying commands can be carried out, otherwise an error message will be printed to the terminal. In the case of subsequent commands which overlap each other, the most recent command will modify a pixel, even if it has previously been written to. If a command file has multiple 'I N M' commands, then all subsequent commands will be carried out on the most recent grid.
+
+### Testing
+Unit testing was carried out using the RSPEC gem. The testing modelled a series of test cases for each function and evaluated the outputs compared to the hardwritten answers. An input file was created for each test case when testing the BitmapEditor class.
+
+<br>
+<img src="res/testing.png"/>
+
+### Design  
+
+<br>
+<p align="center">
+  <img src="res/classdiagram.png" width="600"/>
+</p>
