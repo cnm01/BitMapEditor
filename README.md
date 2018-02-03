@@ -57,6 +57,7 @@ Unit testing was carried out using the RSPEC gem. The testing modelled a series 
 <img src="res/testing.png"/>
 
 ### Design  
+This solution identifies two entities, a Bitmap class which models the actual grid of pixels, and a BitmapEditor class which calls functions on the bitmap based on the commands supplied from the input file. The Bitmap class contains all the functions that directly modify the bitmap. These functions are called from the BitmapEditor class which iterates over each line in the command file, executing the appropriate block of code which calls functions to modify the Bitmap. The functionality for modifying the bitmap is isolated into the Bitmap class and is not in the BitmapEditor class so that if changes to the functions, or updates are needed, then these changes can be made, without the need to update the BitmapEditor class which only calls these functions.
 
 <br>
 <p align="center">
